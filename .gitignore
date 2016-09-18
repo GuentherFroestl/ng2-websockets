@@ -4,3 +4,5 @@ build/
 npm-debug.log
 app/**/*.js
 app/**/*.js.map
+/client/nbproject/private/
+/server/nbproject/private/
