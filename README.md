@@ -1,5 +1,6 @@
 # ng2.0-websockets
 Example project of using WebSockets in an Angular 2 application.
+The project is aimed to provide a playground for starting angular2 WebSocket features within a given project.
 
 This project consists of two parts, a client (angular2 release and server part (Nodejs 4.x).
 
