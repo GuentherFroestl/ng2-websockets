@@ -1,7 +1,7 @@
-# ng2-websockets
+# ng2.0-websockets
 Example project of using WebSockets in an Angular 2 application.
 
-This project consists of two parts, a client (angular2.rc6) and server part (Nodejs 4.x).
+This project consists of two parts, a client (angular2 release and server part (Nodejs 4.x).
 
 ## Server
 - Download or clone the repo and run `npm install` in the server directory to install server dependencies.
@@ -25,8 +25,8 @@ interface Message {
 	newDate?: string
 }
 ```
-
-the field newDate is added by the server.
+## Responses via WebSocket
+The message send is 10 x send by the server via teh WebSocket (the field newDate is added and updated by the server).
 
 ## Credits
-This project is based on previous work by Łukasz Wojciechowski (https://github.com/lwojciechowski/mildchat-client), who also wrote [this great article] (https://medium.com/@lwojciechowski/websockets-with-angular2-and-rxjs-8b6c5be02fac#.v1d65auh8)  on Angular 2 and websockets.
+forked from PeterKassenaar/ng2-websockets
