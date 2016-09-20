@@ -1,29 +1,28 @@
-import { ChatService, Message  } from '../shared/services/chat.service';
+import { ChatService  } from '../shared/services/chat.service';
 import { Component, ElementRef  } from '@angular/core';
 import * as Rx from 'rxjs/Rx';
 
 @Component({
-  selector: 'chat-component',
-  template: `
+    selector: 'chat-component',
+    template: `
 		<div class="messages">\n\
-      <h3>Object: {{currentMsg.author}} sayed: "{{currentMsg.message}}" last broodcast at: {{currentMsg.newDate}}</h3>
+      <h3>Object: {{currentMsg}}</h3>
 			<h4>Recieved messages:</h4>
-			<p *ngFor="let msg of messages">{{msg.author}} sayed: "{{msg.message}}" send at: {{msg.newDate}}</p>
+			<p *ngFor="let msg of messages">{{msg}}</p>
 		</div>
 	`
 })
 export class ChatComponent {
-  private messages: Message[] = [];
-  private currentMsg: Message =
-  {
-    author: "",
-    message: "",
-    newDate: ""
-  };
-  constructor(private chatService: ChatService) {
-    chatService.messages.subscribe(msg => {
-      this.messages.push(msg);
-      this.currentMsg = msg;
-    });
-  }
+    private messages: any[] = [];
+    private currentMsg: any = "bloop";
+    constructor(private chatService: ChatService) {
+        chatService.messages.subscribe(msg => {
+            /**
+             * data: """15:17:59", origin: "ws://localhost:3005"
+             */
+             let text : String = "origin: "+msg.origin + " data:"+msg.data;
+            this.messages.push(text);
+            this.currentMsg = text;
+        });
+    }
 }

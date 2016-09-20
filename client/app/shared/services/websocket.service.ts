@@ -3,35 +3,37 @@ import * as Rx from 'rxjs/Rx';
 
 @Injectable()
 export class WebSocketService {
-	private subject: Rx.Subject<MessageEvent>;
+    private subject: Rx.Subject<any>;
 
-	public connect(url): Rx.Subject<MessageEvent> {
-		if (!this.subject) {
-			this.subject = this.create(url);
-		}
-		return this.subject;
-	}
+    public connect(url): Rx.Subject<any> {
+        if (!this.subject) {
+            this.subject = this.create(url);
+        }
+        return this.subject;
+    }
 
-	private create(url): Rx.Subject<MessageEvent> {
-		let ws = new WebSocket(url);
+    private create(url): Rx.Subject<String> {
+        let ws = new WebSocket(url);
 
-		let observable = Rx.Observable.create(
-			(obs: Rx.Observer<MessageEvent>) => {
-				ws.onmessage = obs.next.bind(obs);
-				ws.onerror = obs.error.bind(obs);
-				ws.onclose = obs.complete.bind(obs);
+        let observable = Rx.Observable.create(
+            (obs: Rx.Observer<any>) => {
+                ws.onmessage = obs.next.bind(obs);
+                ws.onerror = obs.error.bind(obs);
+                ws.onclose = obs.complete.bind(obs);
 
-				return ws.close.bind(ws);
-			})
+                return ws.close.bind(ws);
+            })
 
-		let observer = {
-			next: (data: Object) => {
-				if (ws.readyState === WebSocket.OPEN) {
-					ws.send(JSON.stringify(data));
-				}
-			}
-		}
+        let observer = {
+            next: (data: Object) => {
+                if (ws.readyState === WebSocket.OPEN) {
+                    ws.send(JSON.stringify(data));
+                }
+            }
+        }
 
-		return Rx.Subject.create(observer, observable);
-	}
+
+        return Rx.Subject.create(observer, observable);
+    }
+
 } // end class WebSocketService

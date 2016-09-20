@@ -21,8 +21,7 @@ function socketConnection(conn) {
       console.log(new Date().toLocaleTimeString(), "upadte and broadcast this object", msgObj);
       // echo message including the new field to all connected clients
       server.connections.forEach(function (conn) {
-        msgObj.newDate = new Date().toLocaleTimeString();
-        var returnMsg = JSON.stringify(msgObj);
+        var returnMsg = msgObj+" "+new Date().toLocaleTimeString();
         conn.sendText(returnMsg);
         console.log(new Date().toLocaleTimeString(), "send to connection this text:\n" + returnMsg);
       });

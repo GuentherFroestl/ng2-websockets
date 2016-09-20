@@ -8,11 +8,11 @@ import { ChatService } from '../shared/services/chat.service';
 		<form>
 		  <div class="input-group col-xs-8">
                 <input
-                    [(ngModel)]="message.message"
+                    [(ngModel)]="message"
                     name="msg"                    
                     type="text"
                     class="form-control"
-                    placeholder="type in message...">
+                    placeholder="type in a message...">
                 <span class="input-group-btn">
                     <button class="btn btn-secondary" (click)="sendMsg()">send</button>
                 </span>
@@ -22,10 +22,7 @@ import { ChatService } from '../shared/services/chat.service';
 })
 export class CreateMessage {
   btnDisabled: boolean = false;
-  private message = {
-    author: 'Testuser',
-    message: ''
-  }
+  private message = "ping";
   constructor(private chatService: ChatService) {
 
   }
@@ -33,6 +30,6 @@ export class CreateMessage {
   sendMsg() {
     // console.log('new message from client: ', this.message);
     this.chatService.messages.next(this.message);
-    this.message.message = '';
+    this.message= '';
   }
 }
