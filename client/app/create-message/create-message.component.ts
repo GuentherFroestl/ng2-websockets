@@ -30,6 +30,5 @@ export class CreateMessage {
   sendMsg() {
     // console.log('new message from client: ', this.message);
     this.chatService.messages.next(this.message);
-    this.message= '';
   }
 }

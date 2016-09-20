@@ -4,6 +4,7 @@ import * as Rx from 'rxjs/Rx';
 @Injectable()
 export class WebSocketService {
     private subject: Rx.Subject<any>;
+    private  ws : WebSocket;
 
     public connect(url): Rx.Subject<any> {
         if (!this.subject) {
@@ -11,23 +12,27 @@ export class WebSocketService {
         }
         return this.subject;
     }
+    
+    public disconnect(){
+        this.ws.close();
+    }
 
     private create(url): Rx.Subject<String> {
-        let ws = new WebSocket(url);
+        this.ws = new WebSocket(url);
 
         let observable = Rx.Observable.create(
             (obs: Rx.Observer<any>) => {
-                ws.onmessage = obs.next.bind(obs);
-                ws.onerror = obs.error.bind(obs);
-                ws.onclose = obs.complete.bind(obs);
+                this.ws.onmessage = obs.next.bind(obs);
+                this.ws.onerror = obs.error.bind(obs);
+                this.ws.onclose = obs.complete.bind(obs);
 
-                return ws.close.bind(ws);
+                return this.ws.close.bind(this.ws);
             })
 
         let observer = {
             next: (data: Object) => {
-                if (ws.readyState === WebSocket.OPEN) {
-                    ws.send(JSON.stringify(data));
+                if (this.ws.readyState === WebSocket.OPEN) {
+                    this.ws.send(JSON.stringify(data));
                 }
             }
         }

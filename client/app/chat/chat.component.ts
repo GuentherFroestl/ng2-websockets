@@ -14,13 +14,14 @@ import * as Rx from 'rxjs/Rx';
 })
 export class ChatComponent {
     private messages: any[] = [];
-    private currentMsg: any = "bloop";
+    private currentMsg: any = "";
     constructor(private chatService: ChatService) {
+        this.subscribe(this.chatService);
+    }
+
+    private subscribe(chatService: ChatService) {
         chatService.messages.subscribe(msg => {
-            /**
-             * data: """15:17:59", origin: "ws://localhost:3005"
-             */
-             let text : String = "origin: "+msg.origin + " data:"+msg.data;
+            let text: String = "origin: " + msg.origin + " data:" + msg.data;
             this.messages.push(text);
             this.currentMsg = text;
         });
