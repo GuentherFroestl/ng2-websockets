@@ -6,7 +6,7 @@ import * as Rx from 'rxjs/Rx';
   selector: 'chat-component',
   template: `
 		<div class="messages">\n\
-      <h3>Object: {{currentMsg.author}} sayed: "{{currentMsg.message}}" last braodcast at: {{currentMsg.newDate}}</h3>
+      <h3>Object: {{currentMsg.author}} sayed: "{{currentMsg.message}}" last broodcast at: {{currentMsg.newDate}}</h3>
 			<h4>Recieved messages:</h4>
 			<p *ngFor="let msg of messages">{{msg.author}} sayed: "{{msg.message}}" send at: {{msg.newDate}}</p>
 		</div>
