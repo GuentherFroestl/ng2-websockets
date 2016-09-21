@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule  } from '@angular/forms';
 
 // services
-import { ChatService } from './shared/services/chat.service';
+import { ChatService2 } from './shared/services/chat.service2';
 import { WebSocketService } from './shared/services/websocket.service';
 
 // components
@@ -15,7 +15,7 @@ import { ChatComponent } from './chat/chat.component';
 @NgModule({
 	imports: [BrowserModule, FormsModule],
 	declarations: [AppComponent, ChatComponent, CreateMessage],
-	providers: [ChatService, WebSocketService],
+	providers: [ChatService2, WebSocketService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
