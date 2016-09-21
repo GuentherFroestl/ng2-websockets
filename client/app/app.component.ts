@@ -3,10 +3,8 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'ws-app',
 	template:`
-		<h1>Angular 2 (ts) WebSockets example</h1>		
-		<create-message></create-message>
-		<hr />	
-		<chat-component></chat-component>						
+		<h1>FNT WebSocket TestClient</h1>		
+		<create-message></create-message>					
 	`	
 })
 export class AppComponent{

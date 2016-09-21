@@ -1,0 +1,30 @@
+<h3>WebSocket URL</h3>	
+<form>
+    <div class="input-group col-xs-8">
+        <input
+            [(ngModel)]="url"
+            name="url"                    
+            type="text"
+            class="form-control"
+            placeholder="type in a websocket url">
+        <hr/>\n\
+    </div>\n\\n\
+    <div class="input-group col-xs-8">
+        <h3>message to be send</h3>	
+        <input
+            [(ngModel)]="message"
+            name="msg"                    
+            type="text"
+            class="form-control"
+            placeholder="type in a message...">
+        <span class="input-group-btn">
+            <button class="btn btn-secondary" (click)="sendMsg(message)">send</button>
+        </span>
+    </div>
+</form>\n\
+<div class="messages">\n\
+    <h3>Object: {{currentMsg}}</h3>
+    <h4>Recieved messages:</h4>
+    <p *ngFor="let msg of messages">{{msg}}</p>
+</div>
+`
