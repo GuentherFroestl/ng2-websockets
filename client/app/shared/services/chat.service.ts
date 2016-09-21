@@ -4,9 +4,10 @@ import {WebSocketService } from './websocket.service';
 
 //const CHAT_URL = 'ws://172.27.15.128:8080/softwarecatalogmgmt-softwarespec/wx/v1/notifier';
 //const CHAT_URL = 'ws://localhost:3005';
-const CHAT_URL = 'ws://echo.websocket.org';
+//const CHAT_URL = 'ws://echo.websocket.org';
 
-//const CHAT_URL = 'ws://sapp-dev-02/softwarecatalogmgmt-softwarespec/rs/v1/notifications';
+//const CHAT_URL = 'ws://sapp-dev-02:8080/softwarecatalogmgmt-softwarespec/rs/v1/notifications';
+const CHAT_URL = 'ws://sapp-dev-03:8080/softwarecatalogmgmt-softwarespec/rs/v1/notifications';
 
 /*
  * ws://172.27.15.128:8080/softwarecatalogmgmt-softwarespec/wx/v1/notifier 

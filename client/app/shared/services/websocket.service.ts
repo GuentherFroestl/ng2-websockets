@@ -25,8 +25,8 @@ export class WebSocketService {
                 this.ws.onmessage = obs.next.bind(obs);
                 this.ws.onerror = obs.error.bind(obs);
                 this.ws.onclose = obs.complete.bind(obs);
-
-                return this.ws.close.bind(this.ws);
+                return this.ws;
+//                return this.ws.close.bind(this.ws);
             })
 
         let observer = {
