@@ -65,7 +65,7 @@ export class CreateMessage {
     }
 
     private buildMsgString(res): String {
-        let str: String = "received " + res.data + " from origin: " + res.origin;
+        let str: String = res.data + " from origin: " + res.origin;
         return str;
     }
 }
